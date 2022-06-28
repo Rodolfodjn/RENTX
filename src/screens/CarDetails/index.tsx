@@ -21,9 +21,11 @@ import { Container,Header, CarImages,
     Period,
     Prince,
     About,
-    Accessories
+    Accessories,
+    Footer
 
 } from './styles';
+import { Button } from '../../components/Button';
 
 export function CarDetails(){
     return (
@@ -71,12 +73,11 @@ export function CarDetails(){
                     para quem gosta de acelerar.
 
                 </About>
-
-
-
             </Content>
 
-
+                <Footer>
+                    <Button title="Confirmar" color={''} />
+                </Footer>
 
 
         </Container>
