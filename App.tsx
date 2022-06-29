@@ -1,3 +1,5 @@
+import 'react-native-gesture-handler';
+
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
@@ -14,7 +16,7 @@ import {
 
 import {ThemeProvider} from 'styled-components';
 
-import {Home} from './src/screens/Home';
+import {Routes} from './src/routes';
 import AppLoading from 'expo-app-loading';
 
 import theme from './src/styles/theme';
@@ -34,7 +36,7 @@ Archivo_600SemiBold
   
   return (
     <ThemeProvider theme={theme}>
-    <Home/>
+    <Routes/>
     </ThemeProvider>
   );
 }
