@@ -11,10 +11,25 @@ import {Container,
 
 } from './styles';
 import { ConfirmButton } from '../../components/ConfirmButton';
+import { CommonActions, useNavigation } from '@react-navigation/native';
+import { useTheme } from 'styled-components';
 
 
 export function SchedulingComplete(){
     const {width} = useWindowDimensions();
+
+    const theme = useTheme();
+
+    const navigation = useNavigation();
+
+    function handleConfirm() { 
+        navigation.dispatch(CommonActions.navigate
+            ({name: 'Home'})
+        );
+    }
+
+
+
 
 
 return (
@@ -41,7 +56,7 @@ return (
         </Content>
 
         <Footer>
-        <ConfirmButton title='OK'/>
+        <ConfirmButton title='OK' onPress={handleConfirm}/>
 
         </Footer>
 

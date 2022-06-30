@@ -26,8 +26,22 @@ import { Container,Header, CarImages,
 
 } from './styles';
 import { Button } from '../../components/Button';
+import { CommonActions, useNavigation } from '@react-navigation/native';
 
 export function CarDetails(){
+
+    const navigation = useNavigation();
+
+    function handleConfirmRental() { 
+        navigation.dispatch(CommonActions.navigate
+            ({name: 'Scheduling'})
+        );
+    }
+
+
+
+
+
     return (
         <Container>
             <Header>
@@ -76,7 +90,7 @@ export function CarDetails(){
             </Content>
 
                 <Footer>
-                    <Button title="Confirmar" color={''} />
+                    <Button title="Escolher o período do Aluguel" color={''} onPress={handleConfirmRental}/>
                 </Footer>
 
 

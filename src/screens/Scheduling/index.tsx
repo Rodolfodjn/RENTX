@@ -9,10 +9,20 @@ import { Content, Footer,Container,Header, Title,RentalPeriod,DateInfo, DateTitl
 import { StatusBar } from 'react-native';
 
 import { Button } from '../../components/Button';
+import { CommonActions, useNavigation } from '@react-navigation/native';
 
 export function Scheduling() {
 
     const theme = useTheme();
+
+    const navigation = useNavigation();
+
+    function handleConfirmRental() { 
+        navigation.dispatch(CommonActions.navigate
+            ({name: 'SchedulingDetails'})
+        );
+    }
+
 
 
     return (
@@ -55,7 +65,7 @@ export function Scheduling() {
             </Content>
 
             <Footer>
-                <Button title='Confirmar' color={''} />
+                <Button title='Confirmar' color={''} onPress={handleConfirmRental} />
             </Footer>
 
 

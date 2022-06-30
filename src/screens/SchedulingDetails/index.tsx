@@ -39,9 +39,22 @@ import { Container,Header, CarImages,
 import { Button } from '../../components/Button';
 
 import { useTheme } from 'styled-components';
+import { CommonActions, useNavigation } from '@react-navigation/native';
 
 export function SchedulingDetails(){
     const theme = useTheme();
+
+    const navigation = useNavigation();
+
+    function handleConfirmRental() { 
+        navigation.dispatch(CommonActions.navigate
+            ({name: 'SchedulingComplete'})
+        );
+    }
+
+
+
+
     return (
         <Container>
             <Header>
@@ -119,7 +132,7 @@ export function SchedulingDetails(){
             </Content>
 
                 <Footer>
-                    <Button title="Confirmar" color={''} />
+                    <Button title="Alguar agora" color={theme.colors.success} onPress={handleConfirmRental}/>
                 </Footer>
 
         </Container>
