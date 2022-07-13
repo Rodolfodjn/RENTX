@@ -22,24 +22,20 @@ export function Home(){
     const [cars, setCars] = useState<CarDTO[]>([]);
     const [loading, setLoading ] = useState(true);
 
+ 
 
-
-const carData = {
-        brand: 'Audi',
-        name: 'RS 5 COUPE',
-        rent: {
-            period: 'AO DIA',
-            price: 120,
-        },
-        thumbnail: 'https://th.bing.com/th/id/R.8dfe458d49d2336d9c9e690a85ea73de?rik=vXbtBkLZlwwToA&riu=http%3a%2f%2fi0.statig.com.br%2fbancodeimagens%2f4g%2fx0%2fcb%2f4gx0cbijp8n7qf9suaplxbfza.jpg&ehk=5y%2floB32lW2vNbTQ2SI3svZ9V0b%2fMIdoWmU3aZohtpw%3d&risl=&pid=ImgRaw&r=0'
-        
-    }
     
-    function handleCarDetails() { 
-        navigation.dispatch(CommonActions.navigate
-            ({name: 'CarDetails'})
-        );
-    }
+    function handleCarDetails(car: CarDTO) { 
+        navigation.dispatch(
+            CommonActions.navigate({
+              name: 'CarDetails',
+              params: {car},
+            })
+          );
+        }
+        
+
+        
 
 
 useEffect(() => {
@@ -79,12 +75,13 @@ useEffect(() => {
                </HeaderContent> 
             </Header>
 
-            {loading ? <Load /> :
+            { loading ? <Load /> :
             <CarList 
-            data={cars}
-            keyExtractor={item => item.id}
-            renderItem={({ item }) =>
-             <Car data={item} onPress={handleCarDetails} />
+             data={cars}
+             keyExtractor={item => item.id}
+             renderItem={({ item }) =>
+                  <Car data={item} onPress={() => handleCarDetails(item)} />
+               
                 }
               />
             }

@@ -26,16 +26,31 @@ import { Container,Header, CarImages,
 
 } from './styles';
 import { Button } from '../../components/Button';
-import { CommonActions, useNavigation } from '@react-navigation/native';
+import { CommonActions, useNavigation, useRoute } from '@react-navigation/native';
+import { CarDTO } from '../../dtos/CarDTO';
+
+interface Params {
+    car: CarDTO;
+}
+
 
 export function CarDetails(){
 
     const navigation = useNavigation();
 
+    const route = useRoute();
+    const { car } = route.params as Params;
+
+
+
     function handleConfirmRental() { 
         navigation.dispatch(CommonActions.navigate
             ({name: 'Scheduling'})
         );
+    }
+
+    function handleBack(){
+        navigation.goBack();
     }
 
 
@@ -45,13 +60,13 @@ export function CarDetails(){
     return (
         <Container>
             <Header>
-                <BackButton onPress={() => {}} />
+                <BackButton onPress={handleBack} />
             </Header>
 
 
             <CarImages>
             <ImageSlider 
-                imageUrl = {['https://th.bing.com/th/id/R.8dfe458d49d2336d9c9e690a85ea73de?rik=vXbtBkLZlwwToA&riu=http%3a%2f%2fi0.statig.com.br%2fbancodeimagens%2f4g%2fx0%2fcb%2f4gx0cbijp8n7qf9suaplxbfza.jpg&ehk=5y%2floB32lW2vNbTQ2SI3svZ9V0b%2fMIdoWmU3aZohtpw%3d&risl=&pid=ImgRaw&r=0']}
+                imageUrl = {car.photos}
 
             />
         </CarImages>
@@ -59,34 +74,30 @@ export function CarDetails(){
             <Content>
                 <Details>
                     <Description>
-                        <Brand> Lamborghini</Brand>
-                        <Name>hutacan</Name>
+                        <Brand> {car.brand}</Brand>
+                        <Name>{car.name}</Name>
                     </Description>
 
                     <Rent>
-                        <Period>Ao Dia</Period>
-                        <Prince>R$ 580</Prince>
+                        <Period>{car.rent.period}</Period>
+                        <Prince>R$ {car.rent.price} </Prince>
                     </Rent>
                 </Details>
 
                 <Accessories>
-
-                   <Accessory name='380km/h' icon={speedSvg}/>
-                   <Accessory name='3.2s' icon={accelerationSvg}/>
-                   <Accessory name='800 HP' icon={forceSvg}/>
-                   <Accessory name='Gasolina' icon={gasolineSvg}/>
-                   <Accessory name='Auto' icon={exchangeSvg}/>
-                   <Accessory name='2 Pessoas' icon={peopleSvg}/>
-
-
+                    {
+                        car.accessories.map(accessory => (
+                        <Accessory
+                         key={ accessory.type}
+                         name={accessory.name}
+                         icon={speedSvg}
+                         />
+                        ))
+                }
+                   
                 </Accessories>
 
-                <About>
-                    Este é o automóvel desportivo. Surgiu do lendário tourode lide
-                    indultado na praça Real Maestranza de Sevilla. É um belissimo carro
-                    para quem gosta de acelerar.
-
-                </About>
+                <About>{car.about}</About>
             </Content>
 
                 <Footer>
