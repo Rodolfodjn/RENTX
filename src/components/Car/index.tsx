@@ -16,6 +16,7 @@ import {
 } from './style';
 
 import {CarDTO} from '../../dtos/CarDTO';
+import { getAccessoryIcon } from "../../utils/getAccessoryIcon";
 
 
 interface Props extends RectButtonProps{
@@ -23,6 +24,9 @@ interface Props extends RectButtonProps{
 }
 
 export function Car({data, ...rest} : Props){
+    const MotorIcon = getAccessoryIcon(data.fuel_type);
+
+
     return (
         <Container {...rest}>
             <Details>
@@ -36,7 +40,7 @@ export function Car({data, ...rest} : Props){
                     </Rent>
 
                     <Type>
-                        <GasolineSvg/>
+                        <MotorIcon/>
                     </Type>
                 </About>
 
