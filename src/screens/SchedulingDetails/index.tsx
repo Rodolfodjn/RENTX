@@ -3,12 +3,13 @@ import { BackButton } from '../../components/BackButton';
 import { ImageSlider } from '../../components/ImageSlider';
 import { Accessory } from '../../components/Accessory';
 import { Feather} from '@expo/vector-icons';
-import speedSvg from '../../assets/SpeedSvg.svg';
+import speedSvg from '../assets/SpeedSvg.svg';
 import accelerationSvg from '../../assets/acceleration.svg';
-import forceSvg from '../../assets/force.svg';
-import gasolineSvg from '../../assets/gasoline.svg';
-import exchangeSvg from '../../assets/exchange.svg';
-import peopleSvg from '../../assets/people.svg';
+import forceSvg from '../assets/force.svg';
+import gasolineSvg from '../assets/gasoline.svg';
+import exchangeSvg from '../assets/exchange.svg';
+import peopleSvg from '../assets/people.svg';
+
 import {RFValue} from 'react-native-responsive-fontsize';
 
 
@@ -34,7 +35,6 @@ import { Container,Header, CarImages,
     RentalPrinceQuota,
     RentalPrinceTotal,
     
-
 } from './styles';
 import { Button } from '../../components/Button';
 
@@ -52,13 +52,16 @@ export function SchedulingDetails(){
         );
     }
 
+    function handleBack(){
+        navigation.goBack();
+    }
 
 
 
     return (
         <Container>
             <Header>
-                <BackButton onPress={() => {}} />
+                <BackButton onPress={handleBack} />
             </Header>
 
 

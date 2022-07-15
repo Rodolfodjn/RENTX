@@ -40,7 +40,7 @@ export function CarDetails(){
 
     function handleConfirmRental() { 
         navigation.dispatch(CommonActions.navigate
-            ({name: 'Scheduling'})
+            ({name: 'Scheduling', params: {car}})
         );
     }
 
