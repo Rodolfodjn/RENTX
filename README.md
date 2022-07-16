@@ -6,6 +6,8 @@ Projeto desenvolvido durante terceiro capítulo do treinamento Ignite da [Rocket
 ![](cover.png)
 
 
+
+
 ## 🧪 Tecnologias utilizadas / Used Technologies
 
 - [React Native](https://reactnative.dev/)
@@ -20,7 +22,6 @@ Projeto desenvolvido durante terceiro capítulo do treinamento Ignite da [Rocket
 Clone o projeto e acesso o diretório.
 
 ```bash
-$ git clone https://github.com/henriquelvieira/React-Native-Rentx.git
 
 $ cd React-Native-Rentx
 
