@@ -1,18 +1,22 @@
 import React from 'react';
-import {MaterialIcons} from '@expo/vector-icons';
+import {Ionicons} from '@expo/vector-icons';
 import {BorderlessButtonProps} from 'react-native-gesture-handler';
 
+import { useTheme } from 'styled-components';
+import { MaterialIcons } from 'expo-vector-icons';
+import { TouchableOpacityProps } from 'react-native';
 
 import {
     Container
 } from './styles';
-import { useTheme } from 'styled-components';
 
-interface Props extends BorderlessButtonProps {
+
+interface BackButtonProps extends TouchableOpacityProps {
     color?: string;
-}
+  }
 
-export function BackButton({color, ...rest}: Props){
+  
+export function BackButton({color, ...rest}: BackButtonProps){
     const theme = useTheme();
 
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BackButton } from '../../components/BackButton';
 import { useTheme } from 'styled-components';
 import ArrowSvg from '../../assets/arrow.svg';
-import {Calendar, DayProps, MarkedDateProps, generateInterval} from '../../components/Calendar';
+import {Calendar, dayProps, markedDateProps, generateInterval} from '../../components/Calendar';
 import { Content, Footer,Container,Header, Title,RentalPeriod,DateInfo, DateTitle, DateValue
 } from './styles';
 
@@ -28,8 +28,8 @@ interface Params {
 
 
 export function Scheduling() {
-    const [lastSelectdDate, setLastSelectedDate] = useState<DayProps>({} as DayProps);
-    const [markedDates, setMarkedDates] = useState<MarkedDateProps>({} as MarkedDateProps);
+    const [lastSelectdDate, setLastSelectedDate] = useState<dayProps>({} as dayProps);
+    const [markedDates, setMarkedDates] = useState<markedDateProps>({} as markedDateProps);
     const [rentalPeriod, setRentalPeriod] = useState<rentalPeriod>({} as rentalPeriod);
     
     const theme = useTheme();
@@ -55,7 +55,7 @@ export function Scheduling() {
         navigation.goBack();
     }
 
-    function handleChangeDate(date: DayProps){
+    function handleChangeDate(date:dayProps){
             let start = !lastSelectdDate.timestamp ? date : lastSelectdDate;
             let end = date;
 

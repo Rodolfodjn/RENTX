@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { BackButton } from '../../components/BackButton';
 import { ImageSlider } from '../../components/ImageSlider';
 import { Accessory } from '../../components/Accessory';
-import { Feather} from '@expo/vector-icons';
+
 
 import {RFValue} from 'react-native-responsive-fontsize';
 

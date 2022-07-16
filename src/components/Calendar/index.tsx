@@ -1,17 +1,24 @@
 import React from 'react';
 
-import {Calendar as CustomCalendar,
-LocaleConfig, CalendarProps } from 'react-native-calendars';
+import { useTheme } from 'styled-components';
+import { MaterialIcons } from 'expo-vector-icons';
+
+import {generateInterval} from '../Calendar/generateInterval';
+
+import {ptBR} from '../Calendar/localeConfig';
 
 
-import {useTheme} from 'styled-components';
-import {Feather} from '@expo/vector-icons';
-import {generateInterval} from './generateinterval';
-import {ptBR} from './localeConfig';
+
+import {Calendar as CustomCalendar, LocaleConfig, CalendarProps } from 'react-native-calendars';
 
 
-LocaleConfig.locales['pt-br'] = ptBR;
-LocaleConfig.defaultLocale='pt-br';
+
+
+// LocaleConfig.locales['pt-br'] = ptBR;
+// LocaleConfig.defaultLocale='pt-br';
+
+LocaleConfig.locales['pt-br'] = ptBR
+LocaleConfig.defaultLocale = 'pt-br'
 
 interface MarkedDateProps{
     [date: string]: {
@@ -40,7 +47,7 @@ function Calendar({markedDates, onDayPress }: CalendarProps){
         <CustomCalendar
         
         renderArrow={(direction) => 
-        <Feather 
+        <MaterialIcons
             size={24}
             color={theme.colors.text}
             name={direction== 'left' ? 'chevron-left' : 'chevron-right'}
@@ -77,10 +84,18 @@ function Calendar({markedDates, onDayPress }: CalendarProps){
 }
 
 
+// export {
+//     Calendar, generateInterval
+// };
+// export type {
+//     MarkedDateProps,
+//     DayProps
+// };
 export {
-    Calendar, generateInterval
+    Calendar,
+    generateInterval
 };
-export type {
-    MarkedDateProps,
-    DayProps
-};
+export type markedDateProps = MarkedDateProps;
+
+export type dayProps = DayProps;
+
