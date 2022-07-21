@@ -1,7 +1,8 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
-import {Container,Header, HeaderContent, TotalCars, CarList} from './styles';
+import {Container,Header, HeaderContent, TotalCars, CarList, MyCarsButton} from './styles';
 import {RFValue} from 'react-native-responsive-fontsize';
+import {Ionicons} from '@expo/vector-icons';
 
 import Logo from '../../assets/logo.svg';
 import {Car} from '../../components/Car';
@@ -12,6 +13,8 @@ import {api} from '../../services/api';
 import { useEffect, useState } from 'react';
 
 import {CarDTO} from '../../dtos/CarDTO'; 
+import { useTheme } from 'styled-components';
+import { MaterialCommunityIcons, MaterialIcons } from 'expo-vector-icons';
 
 
 
@@ -22,17 +25,22 @@ export function Home(){
     const [cars, setCars] = useState<CarDTO[]>([]);
     const [loading, setLoading ] = useState(true);
 
- 
+ const theme = useTheme();
 
     
     function handleCarDetails(car: CarDTO) { 
-        navigation.dispatch(
-            CommonActions.navigate({
-              name: 'CarDetails',
-              params: {car},
-            })
-          );
-        }
+      navigation.navigate('CarDetails', { car });
+        };
+
+    function handleOpenMyCars() { 
+            navigation.dispatch(
+                CommonActions.navigate({
+                  name: 'MyCars',
+                })
+              );
+            }
+
+
         
 
         
@@ -71,7 +79,9 @@ useEffect(() => {
                <Logo 
                width={RFValue(108)}
                height={RFValue(12)}/>
-               <TotalCars>Total de 12 carros</TotalCars>
+                {
+                    !loading && <TotalCars>{`Total de ${cars.length} carros`}</TotalCars> 
+                }
                </HeaderContent> 
             </Header>
 
@@ -85,6 +95,17 @@ useEffect(() => {
                 }
               />
             }
+
+            <MyCarsButton onPress={handleOpenMyCars}>
+                <Ionicons  
+                name="ios-car-sport"
+                size={32}
+                color= {theme.colors.shape}
+                
+                />
+            </MyCarsButton>
+
+
         </Container>
     );
 }
